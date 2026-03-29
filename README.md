@@ -2,7 +2,7 @@
 
 **Version**: 1.0  
 **Author**: Zephyr Muldash  
-**Status**: Draft  
+**Status**: Release  
 **Date**: 2026-03-29  
 **Inspired by**: JSON-RPC 2.0, MCP
 
@@ -12,7 +12,8 @@
 Один endpoint. Один формат. Ноль роутинга.
 
 ```bash
-curl -X POST http://localhost/api \
+curl -X POST http://localhost:8088 \
+  -H 'Content-Type: application/json' \
   -d '{"cmd": "ping"}'
 ```
 
@@ -65,7 +66,7 @@ curl -X POST http://localhost/api \
 
 ```bash
 cd sdk/php
-php -S 0.0.0.0:8088 server.php
+php -S 127.0.0.1:8088 server.php
 ```
 
 ### Node.js (WebSocket сервер)
@@ -79,7 +80,7 @@ node ws-server.js
 ### JavaScript клиент
 
 ```javascript
-const api = new mRPC('http://localhost:8088/api');
+const api = new mRPC('http://localhost:8088');
 
 // Вызвать команду
 const items = await api.call('get_items', { state: 'active' });
@@ -108,7 +109,7 @@ const result = await ws.call('ping');
 ```python
 from mrpc import mRPC
 
-api = mRPC('http://localhost:8088/api')
+api = mRPC('http://localhost:8088')
 result = api.call('get_items', state='active')
 print(result['data'])
 ```

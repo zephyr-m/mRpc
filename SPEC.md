@@ -1,7 +1,7 @@
 # mRPC/1.0 — Спецификация
 
 **Version**: 1.0  
-**Status**: Draft  
+**Status**: Release  
 **Date**: 2026-03-29  
 **Author**: Zephyr Muldash  
 **Inspired by**: JSON-RPC 2.0, MCP
