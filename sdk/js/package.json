@@ -1,0 +1,40 @@
+{
+  "name": "mrpc-client",
+  "version": "1.0.1",
+  "description": "mRPC/1.0 — Matrix Remote Procedure Call. One endpoint, zero routing. Data-driven API protocol.",
+  "author": "Zephyr Muldash",
+  "license": "MIT",
+  "main": "mRPC.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "exports": {
+    ".": "./mRPC.js",
+    "./ws": "./mRPCSocket.js"
+  },
+  "files": [
+    "mRPC.js",
+    "mRPCSocket.js",
+    "test.js",
+    "README.md"
+  ],
+  "keywords": [
+    "rpc",
+    "api",
+    "json-rpc",
+    "protocol",
+    "websocket",
+    "declarative",
+    "data-driven",
+    "self-documenting",
+    "matrix"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zephyr-m/mRpc"
+  },
+  "homepage": "https://github.com/zephyr-m/mRpc",
+  "bugs": {
+    "url": "https://github.com/zephyr-m/mRpc/issues"
+  }
+}
