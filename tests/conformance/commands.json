@@ -1,0 +1,41 @@
+{
+  "get_items": {
+    "type": "query",
+    "sql": "SELECT * FROM items WHERE (:state IS NULL OR state = :state) LIMIT :limit",
+    "params": {"state": null, "limit": 100}
+  },
+  "get_item": {
+    "type": "query",
+    "sql": "SELECT * FROM items WHERE id = :id",
+    "params": ["id"]
+  },
+  "add_item": {
+    "type": "exec",
+    "sql": "INSERT INTO items (name, price, state) VALUES (:name, :price, 'active')",
+    "params": ["name", "price"],
+    "validate": {
+      "name": "required|min:2",
+      "price": "required|numeric"
+    },
+    "emit": "item.created"
+  },
+  "update_item": {
+    "type": "exec",
+    "sql": "UPDATE items SET name = :name WHERE id = :id",
+    "params": ["id", "name"]
+  },
+  "delete_item": {
+    "type": "exec",
+    "sql": "DELETE FROM items WHERE id = :id",
+    "params": ["id"]
+  },
+  "admin_only": {
+    "type": "query",
+    "sql": "SELECT * FROM items",
+    "roles": ["admin"]
+  },
+  "seed": {
+    "type": "exec",
+    "sql": "CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, name TEXT, price REAL, state TEXT DEFAULT 'active'); INSERT INTO items (name, price, state) VALUES ('Widget', 10.5, 'active'), ('Gadget', 25.0, 'active'), ('Old', 5.0, 'archived')"
+  }
+}
